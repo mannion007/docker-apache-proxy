@@ -1,0 +1,17 @@
+version: '2'
+services:
+    apache:
+      build: 
+        context: apache/.
+      volumes:
+        - ./www:/var/www/html
+      expose:
+        - "80"
+        - "443"
+      links:
+        - php-fpm-55:php-fpm
+    php-fpm-55:
+      build: 
+        context: php-fpm/.
+      expose:
+        - "9000"
