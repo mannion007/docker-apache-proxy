@@ -6,8 +6,6 @@ RUN apt-get update && apt-get install -y php5-fpm php5-cli php5-apcu php5-intl p
 
 COPY conf/www.conf /etc/php5/fpm/pool.d/www.conf
 
-CMD /usr/sbin/php5-fpm FOREGROUND
-
 ENTRYPOINT /usr/sbin/php5-fpm --nodaemonize
 
 EXPOSE 9000
