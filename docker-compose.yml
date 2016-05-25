@@ -15,3 +15,9 @@ services:
         - apache
       expose:
         - "9000"
+    maria-db:
+      image: mariadb
+      environment:
+        - MYSQL_ROOT_PASSWORD=spiderpig
+        - MYSQL_DATABASE=laravel
+
