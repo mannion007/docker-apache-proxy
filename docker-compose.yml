@@ -8,10 +8,10 @@ services:
       expose:
         - "80"
         - "443"
-      links:
-        - php-fpm-55:php-fpm
     php-fpm-55:
       build: 
         context: php-fpm/.
+      volumes_from:
+        - apache
       expose:
         - "9000"
