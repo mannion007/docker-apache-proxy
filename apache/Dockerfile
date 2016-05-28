@@ -10,6 +10,11 @@ COPY conf/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN a2enconf servername && a2enmod proxy_http && a2enmod proxy_fcgi
 
-ENTRYPOINT /usr/sbin/apache2ctl -k start -D FOREGROUND
+RUN mkdir /var/www/html/public && chown www-data:www-data /var/www/html/public -R
+
+ADD conf/run.sh /run.sh
+RUN chmod +x /run.sh
 
 EXPOSE 80
+
+CMD ["/run.sh"]
