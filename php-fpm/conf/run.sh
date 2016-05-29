@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -f /var/log/php5-fpm.log & /usr/sbin/php5-fpm.log --nodaemonize
+/usr/sbin/php5-fpm --nodaemonize & tail -f /tmp/xdebug.log
