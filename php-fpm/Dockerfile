@@ -6,6 +6,9 @@ RUN apt-get update && apt-get install -y php5-fpm php5-cli php5-apcu php5-intl p
 
 COPY conf/www.conf /etc/php5/fpm/pool.d/www.conf
 
-ENTRYPOINT /usr/sbin/php5-fpm --nodaemonize
+ADD conf/run.sh /run.sh
+RUN chmod +x /run.sh
 
 EXPOSE 9000
+
+CMD ["/run.sh"]
