@@ -1,23 +1,20 @@
 version: '2'
 services:
-    apache:
-      build: 
-        context: apache/.
+    apache2:
+      image: mannionjames/apache2
       volumes:
         - ./www:/var/www/html
       expose:
         - "80"
         - "443"
-    php-fpm-55:
-      build: 
-        context: php-fpm/.
+    php55-fpm:
+      image: mannionjames/php55-fpm
       volumes_from:
-        - apache
+        - apache2
       expose:
         - "9000"
     maria-db:
       image: mariadb
       environment:
         - MYSQL_ROOT_PASSWORD=spiderpig
-        - MYSQL_DATABASE=laravel
-
+        - MYSQL_DATABASE=myLovelyDatabase
