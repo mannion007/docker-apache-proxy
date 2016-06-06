@@ -8,9 +8,7 @@ RUN echo "ServerName localhost" | sudo tee /etc/apache2/conf-available/servernam
 
 COPY conf/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-RUN a2enconf servername && a2enmod proxy_http && a2enmod proxy_fcgi
-
-RUN mkdir /var/www/html/public && chown www-data:www-data /var/www/html/public -R
+RUN a2enconf servername && a2enmod env && a2enmod proxy && a2enmod proxy_http && a2enmod proxy_fcgi && a2enmod socache_shmcb
 
 ADD conf/run.sh /run.sh
 RUN chmod +x /run.sh
